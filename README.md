@@ -2,6 +2,8 @@
 
 The task at hand involved adapting (implementing) the AdaptIS repository for a custom dataset. Originally, the AdaptIS repository implemented panoptic segmentation for a single class multi-instance dataset (a toy dataset) with the option to extend the code to a (custom) multi-class multi-instance dataset.
 
+(scroll to the bottom for the results)
+
 ## Custom dataset details
 
 1. Number of classes: 5
