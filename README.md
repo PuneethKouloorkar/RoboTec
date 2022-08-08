@@ -27,7 +27,7 @@ pip install -r app/requirements.txt
 ```
 3. Run the file in the shell
 ```
-python /app/train_toy_v2.py --batch-size=1 --workers=0 --gpus=0 --dataset-path=/app/<custom dataset path>
+python /app/train_toy_v2.py --batch-size=1 --workers=0 --gpus=0 --dataset-path=/app/custom_dataset
 ```
 
 ## Run in production mode
