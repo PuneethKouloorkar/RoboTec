@@ -12,7 +12,7 @@ The task at hand involved adapting (implementing) the AdaptIS repository for a c
 The intensity of each pixel in the mask image determines the class ID and instance ID of the pixel. Divide the intensity of the mask image by 4. The left digit is the class ID and the right digit is the result ID of the resulting two-digit number.
 
 ## Run in development (debugging) mode
-1. Create a container called adaptis from the python base image exposing the container to one GPU and increasing the shared memory limit to 128 MB. Get into its  shell. Note that the present working directory msut contain the code and the dataset.
+1. Create a container called adaptis from the python base image exposing the container to one GPU and increasing the shared memory limit to 128 MB. Get into its  shell. Note that the present working directory must contain the code and the dataset.
 ```
 docker run --name=adaptis -v $(pwd):/app --gpus '"device=0"' --shm-size=128m -it python:3.8-slim /bin/bash
 ```
