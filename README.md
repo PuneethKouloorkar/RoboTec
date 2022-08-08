@@ -51,7 +51,7 @@ The hyperparameters weren't changed as the paper suggests that the simplicity of
 | Betas | 0.9 and 0.999 |
 | Epsilon | 1e-8 |
 | Learning rate scheduler | Cosine Annealing |
-| Normlization | mean: 0.5, std: 0.5 in all channels|
+| Normlization | mean = 0.5, std = 0.5 in all channels|
 | Weight initialization | XavierGluon |
 | Optimizer | Adam |
 
