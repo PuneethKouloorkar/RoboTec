@@ -42,5 +42,18 @@ docker run --name adaptis --gpus '"device=0"' --shm-size=128m adaptis
 3. Since the number of classes is 5 now, the number of channels of the output of the segmentation head is now set to 10.
 4. The minor implementations are commented in the files.
 
-## Results 
+## Training hyperparameters
+The hyperparameters weren't changed as the paper suggests that the simplicity of the AdaptIS network allows to train a new dataset almost without fine-tuning. The following are the hyperparameters used in the paper.
+
+| Hyperparamter | Value / Method |
+|-----|-----|
+| Learning Rate | 5e-4 |
+| Betas | 0.9 and 0.999 |
+| Epsilon | 1e-8 |
+| Learning rate scheduler | Cosine Annealing |
+| Normlization | mean: 0.5, std: 0.5 in all channels|
+| Weight initialization | XavierGluon |
+| Optimizer | Adam |
+
+## Results
 
