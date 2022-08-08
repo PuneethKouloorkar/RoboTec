@@ -55,5 +55,10 @@ The hyperparameters weren't changed as the paper suggests that the simplicity of
 | Weight initialization | XavierGluon |
 | Optimizer | Adam |
 
+## Challenges faced
+1. When I first read the task, I thought the task is to transfer learn the pre-trained model provided in the **pytorch** branch of the repo to infer the samples of the custom dataset. But the url provided doesn't exist anymore.
+2. Using the pre-trained model from the **master** branch throws key mismatch error and its time-consuming to debug since the model is complex (deep network with four heads or branches). Fortunately, I still have access to my university cluster where I was able to train and infer the adapted repository (on the custom dataset) on one A100 GPU.
+3. Even with a 40GB GPU, the batch size is restricted to one since the data is high-dimensional. One can use cropping as a data augmentaion method but prior Exploratory Data Analysis (EDA) of the dataset is recommended to understand the disribution of features of the dataset.
+
 ## Results
 
