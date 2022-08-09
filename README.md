@@ -18,7 +18,7 @@ The intensity of each pixel in the mask image determines the class ID and instan
 ```
 docker run --name=adaptis -v $(pwd):/app --gpus '"device=0"' --shm-size=128m -it python:3.8-slim /bin/bash
 ```
-2. In the shell, run the following commands
+2. In the shell, run the following commands. Since some of the inference code is written using Cython, one must compile the code before testing. Hence the make command.
 ```
 apt-get clean
 apt-get -y update
@@ -26,6 +26,7 @@ apt-get -y install python3-dev build-essential
 apt-get install -y python3-opencv
 pip3 install torch==1.8.2 torchvision==0.9.2 torchaudio==0.8.2 --extra-index-url https://download.pytorch.org/whl/lts/1.8/cu111
 pip install -r app/requirements.txt
+make -C ./adaptis/inference/cython_utils
 ```
 3. Run the file in the shell
 ```
@@ -60,9 +61,16 @@ The hyperparameters weren't changed as the paper suggests that the simplicity of
 | Optimizer | Adam |
 
 ## Challenges faced
-1. When I first read the task, I thought the task is to transfer learn the pre-trained model provided in the **pytorch** branch of the repo to infer the samples of the custom dataset. But the url provided doesn't exist anymore.
-2. Using the pre-trained model from the **master** branch throws key mismatch error and its time-consuming to debug since the model is complex (deep network with four heads or branches). Fortunately, I still have access to my university cluster where I was able to train and infer the adapted repository (on the custom dataset) on one A100 GPU.
+1. When I first read the task, I thought the task is to transfer learn a pre-trained model provided in the **pytorch** branch of the repo to infer the samples of the custom dataset. But the url provided doesn't exist anymore.
+2. Using the pre-trained model from the **master** branch throws key mismatch error for the current dataset as there will be a key mismatch error for the new archiecture due to changes in the segmentation head. Fortunately, I still have access to my university cluster where I was able to train and infer the adapted repository (on the custom dataset) on one A100 GPU.
 3. Even with a 40GB GPU, the batch size is restricted to one since the data is high-dimensional. One can use cropping as a data augmentaion method but prior Exploratory Data Analysis (EDA) of the dataset is recommended to understand the disribution of features of the dataset.
 
-## Results
+## Inference results
+
+The training logs are stored in the ```training_logs``` folder and the testing logs are stored in the ```testing_logs``` folder.
+
+Model checkpoints: [Download from here](https://drive.google.com/drive/folders/1UJ607H7na0wysm-lWCPGd9l3wR-UbiMZ?usp=sharing)
+
+**Panoptic Segmentation result:**
+![Panoptic segmentation result](testing_plots/panoptic_seg_results.png)
 

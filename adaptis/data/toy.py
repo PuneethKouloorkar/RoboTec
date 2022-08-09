@@ -82,5 +82,5 @@ class ToyDataset(BaseDataset):
 
     @property
     def things_labels(self):
-        return [1]
+        return [1, 2, 3, 4, 5]
     

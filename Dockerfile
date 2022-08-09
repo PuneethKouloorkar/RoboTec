@@ -23,7 +23,5 @@ COPY . .
 
 ENTRYPOINT [ "python" ]
 
-# CMD ["testing.py"]
-
-CMD [ "train_toy_v2.py", "--batch-size=14", "--workers=2", "--gpus=0", \
-       "--dataset-path=./paper_dataset" ]
+CMD [ "train_toy_v2.py", "--batch-size=1", "--workers=0", "--gpus=0", \
+       "--dataset-path=app/custom_dataset" ]

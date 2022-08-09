@@ -266,7 +266,6 @@ class BaseDataset(Dataset):
             dataset_labels = self.stuff_labels + self.things_labels
             mapping = {label: indx for indx, label in enumerate(dataset_labels)}
             self._from_dataset_mapping = mapping
-
         return self._from_dataset_mapping
 
     @property
@@ -315,13 +314,14 @@ class BaseDataset(Dataset):
         def add_segment(label_id, class_id, isthing):
             if class_id == -1 or (not isthing and class_id >= self.things_offset):
                 return
-
+            
             segment_mask = (instances_mask if isthing else semantic_labels) == label_id
             segment_area = segment_mask.sum()
             if segment_area < min_segment_area:
                 return
 
             category_id = self.to_dataset_mapping[class_id]
+            
             if use_id_generator:
                 segment_id, color = id_generator.get_id_and_color(category_id)
             else:

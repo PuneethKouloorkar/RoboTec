@@ -6,7 +6,7 @@ import numpy as np
 
 @lru_cache(maxsize=16)
 def get_palette(num_cls):
-    palette = np.zeros(num_cls * num_cls, dtype=np.int32)
+    palette = np.zeros(3 * num_cls, dtype=np.int32)
 
     for j in range(0, num_cls):
         lab = j
