@@ -147,9 +147,7 @@ if __name__ == '__main__':
     
     # Results visualization
     vis_samples = [0, 1, 2]
-
     fig_path = os.path.join('app', 'testing_plots', 'panoptic_seg_results.png')
-
     panoptic_seg(dataset, pmodel, vis_samples, proposals_sampling_params, fig_path)
 
     # Test challenging samples
